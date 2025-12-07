@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Rubik's Cube</title>
+    <link rel="stylesheet" href="styles.css"></link>
+</head>
+<body>
+    <!-- 3D Canvas -->
+    <div id="canvas-container"></div>
+
+    <!-- Header -->
+    <header class="ui-overlay header">
+        <div class="logo">
+            <div class="logo-icon">🎲</div>
+            <span class="logo-text">Rubik's Cube</span>
+        </div>
+        <div class="stats">
+            <div class="stat-box">
+                <div class="stat-label">Time</div>
+                <div class="stat-value timer" id="timer">00:00</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-label">Moves</div>
+                <div class="stat-value moves" id="moves">0</div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Instructions -->
+    <div class="ui-overlay instructions">
+        <h3>🎮 Controls</h3>
+        <ul>
+            <li><span class="key">Drag</span> Rotate cube view</li>
+            <li><span class="key">U</span> Up face</li>
+            <li><span class="key">D</span> Down face</li>
+            <li><span class="key">F</span> Front face</li>
+            <li><span class="key">B</span> Back face</li>
+            <li><span class="key">R</span> Right face</li>
+            <li><span class="key">L</span> Left face</li>
+            <li><span class="key">Shift</span> + key = inverse</li>
+        </ul>
+    </div>
+
+    <!-- Side Panel -->
+    <div class="ui-overlay side-panel">
+        <button class="side-btn" id="autoRotateBtn" title="Auto Rotate">🔄</button>
+        <button class="side-btn" id="resetViewBtn" title="Reset View">🎯</button>
+        <button class="side-btn" id="helpBtn" title="Help">❓</button>
+    </div>
+
+    <!-- Controls Panel -->
+    <div class="ui-overlay controls-panel">
+        <div class="move-controls">
+            <div class="move-row">
+                <button class="move-btn face-U" data-move="U">U</button>
+                <button class="move-btn face-U inverse" data-move="U'">U'</button>
+                <button class="move-btn face-D" data-move="D">D</button>
+                <button class="move-btn face-D inverse" data-move="D'">D'</button>
+                <button class="move-btn face-F" data-move="F">F</button>
+                <button class="move-btn face-F inverse" data-move="F'">F'</button>
+            </div>
+            <div class="move-row">
+                <button class="move-btn face-B" data-move="B">B</button>
+                <button class="move-btn face-B inverse" data-move="B'">B'</button>
+                <button class="move-btn face-R" data-move="R">R</button>
+                <button class="move-btn face-R inverse" data-move="R'">R'</button>
+                <button class="move-btn face-L" data-move="L">L</button>
+                <button class="move-btn face-L inverse" data-move="L'">L'</button>
+            </div>
+            <div class="move-row">
+                <button class="move-btn face-M" data-move="M">M</button>
+                <button class="move-btn face-M inverse" data-move="M'">M'</button>
+                <button class="move-btn face-E" data-move="E">E</button>
+                <button class="move-btn face-E inverse" data-move="E'">E'</button>
+                <button class="move-btn face-S" data-move="S">S</button>
+                <button class="move-btn face-S inverse" data-move="S'">S'</button>
+            </div>
+        </div>
+        <div class="main-buttons">
+            <button class="btn btn-secondary" id="resetBtn">🔄 Reset</button>
+            <button class="btn btn-primary" id="scrambleBtn">🎲 Scramble</button>
+            <button class="btn btn-danger" id="solveBtn">✨ Solve</button>
+        </div>
+    </div>
+
+    <!-- Victory Modal -->
+    <div class="modal-overlay" id="victoryModal">
+        <div class="modal">
+            <div class="modal-icon">🏆</div>
+            <h2>Congratulations!</h2>
+            <p>You solved the Rubik's Cube!</p>
+            <div class="modal-stats">
+                <div class="modal-stat">
+                    <div class="modal-stat-value" id="finalTime">00:00</div>
+                    <div class="modal-stat-label">Time</div>
+                </div>
+                <div class="modal-stat">
+                    <div class="modal-stat-value" id="finalMoves">0</div>
+                    <div class="modal-stat-label">Moves</div>
+                </div>
+            </div>
+            <button class="btn btn-primary" id="playAgainBtn">🔄 Play Again</button>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
